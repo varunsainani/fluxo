@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# env
+.env
+.env.local
+.env*.local
+backend/.env
+frontend/.env.local
+
+# build output
+dist/
+.next/
+out/
+**/dist/
+**/.next/
+
+# prisma
+backend/prisma/migrations/dev.db
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
+.vercel
+screenshots/
+
+# editor
+.idea/
+.vscode/

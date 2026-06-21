@@ -1,0 +1,157 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ExecStatus {
+  RUNNING
+  SUCCESS
+  ERROR
+}
+
+enum TriggerKind {
+  MANUAL
+  WEBHOOK
+  SCHEDULE
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  passwordHash  String
+  name          String
+  role          Role           @default(USER)
+  locale        String         @default("en")
+  createdAt     DateTime       @default(now())
+  workflows     Workflow[]
+  datastores    Datastore[]
+  notifications Notification[]
+  connections   Connection[]
+  executions    Execution[]
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Workflow {
+  id           String      @id @default(cuid())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  description  String      @default("")
+  active       Boolean     @default(false)
+  graph        Json
+  webhookToken String      @unique
+  cron         String?
+  timezone     String      @default("UTC")
+  nextRunAt    DateTime?
+  lastRunAt    DateTime?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  executions   Execution[]
+
+  @@index([userId])
+  @@index([active, nextRunAt])
+}
+
+model Execution {
+  id         String      @id @default(cuid())
+  workflowId String
+  workflow   Workflow    @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status     ExecStatus  @default(RUNNING)
+  trigger    TriggerKind
+  input      Json
+  error      String?
+  startedAt  DateTime    @default(now())
+  finishedAt DateTime?
+  durationMs Int?
+  nodeRuns   NodeRun[]
+
+  @@index([workflowId, startedAt])
+  @@index([userId])
+}
+
+model NodeRun {
+  id          String     @id @default(cuid())
+  executionId String
+  execution   Execution  @relation(fields: [executionId], references: [id], onDelete: Cascade)
+  nodeId      String
+  nodeKind    String
+  nodeName    String
+  order       Int
+  status      ExecStatus
+  input       Json?
+  output      Json?
+  error       String?
+  durationMs  Int?
+
+  @@index([executionId, order])
+}
+
+model Datastore {
+  id        String         @id @default(cuid())
+  userId    String
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  createdAt DateTime       @default(now())
+  rows      DatastoreRow[]
+
+  @@unique([userId, name])
+}
+
+model DatastoreRow {
+  id          String    @id @default(cuid())
+  datastoreId String
+  datastore   Datastore @relation(fields: [datastoreId], references: [id], onDelete: Cascade)
+  data        Json
+  createdAt   DateTime  @default(now())
+
+  @@index([datastoreId, createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  channel   String
+  title     String
+  body      String
+  meta      Json?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model Connection {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  baseUrl   String   @default("")
+  headers   Json
+  createdAt DateTime @default(now())
+
+  @@unique([userId, name])
+}
