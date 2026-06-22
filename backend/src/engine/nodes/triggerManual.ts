@@ -7,9 +7,15 @@ import { asString } from "./types";
  * parsed `sample`, else `{}`.
  */
 export const triggerManual: NodeHandler = async ({ config, input }) => {
-  if (input !== undefined && input !== null) {
+  const hasInput =
+    input !== undefined &&
+    input !== null &&
+    !(typeof input === "object" && !Array.isArray(input) && Object.keys(input as object).length === 0);
+
+  if (hasInput) {
     return { output: input };
   }
+
   const sample = asString(config.sample).trim();
   if (sample) {
     try {

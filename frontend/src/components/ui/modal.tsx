@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -22,6 +23,8 @@ export function Modal({
   footer?: React.ReactNode;
   size?: "sm" | "md" | "lg";
 }) {
+  const t = useTranslations("common");
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -67,7 +70,7 @@ export function Modal({
               type="button"
               onClick={onClose}
               className="-mr-1 -mt-1 rounded-md p-1.5 text-faint transition-colors hover:bg-[var(--surface-hover)] hover:text-fg"
-              aria-label="Close"
+              aria-label={t("close")}
             >
               <X size={16} />
             </button>

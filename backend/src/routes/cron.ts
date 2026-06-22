@@ -1,6 +1,8 @@
+import crypto from "crypto";
 import { Router, type Request, type Response } from "express";
 import { parseExpression } from "cron-parser";
 import { prisma } from "../lib/prisma";
+import { env } from "../lib/env";
 import { runWorkflow } from "../engine";
 
 /**
@@ -16,10 +18,10 @@ cronRouter.get("/tick", (req, res) => {
 });
 
 async function tick(req: Request, res: Response): Promise<void> {
-  const secret = process.env.CRON_SECRET ?? "";
+  const secret = env.CRON_SECRET;
   const provided = extractSecret(req);
 
-  if (!secret || provided !== secret) {
+  if (!secret || provided === null || !timingSafeEqualStr(provided, secret)) {
     res.status(401).json({ error: { code: "UNAUTHORIZED", message: "Invalid cron secret" } });
     return;
   }
@@ -67,6 +69,17 @@ function extractSecret(req: Request): string | null {
   const q = req.query.secret;
   if (typeof q === "string") return q;
   return null;
+}
+
+/**
+ * Constant-time string compare. Hash both sides with sha256 so the digests are
+ * always equal length (timingSafeEqual requires equal-length buffers) and the
+ * comparison does not leak the secret's length.
+ */
+function timingSafeEqualStr(a: string, b: string): boolean {
+  const da = crypto.createHash("sha256").update(a).digest();
+  const db = crypto.createHash("sha256").update(b).digest();
+  return crypto.timingSafeEqual(da, db);
 }
 
 /** Compute the next run time for a cron expression in a given timezone, after `from`. */

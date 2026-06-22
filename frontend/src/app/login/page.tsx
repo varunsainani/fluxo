@@ -157,7 +157,7 @@ export default function LoginPage() {
                   placeholder={t("passwordPlaceholder")}
                   autoComplete={mode === "login" ? "current-password" : "new-password"}
                   required
-                  minLength={6}
+                  minLength={8}
                 />
               </div>
 

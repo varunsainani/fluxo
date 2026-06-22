@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Languages, Check } from "lucide-react";
 import { locales, localeNames, LOCALE_COOKIE, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 
 export function LangToggle({ className }: { className?: string }) {
+  const t = useTranslations("topbar");
   const active = useLocale();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export function LangToggle({ className }: { className?: string }) {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        aria-label="Change language"
+        aria-label={t("toggleLanguage")}
         className="inline-flex h-9 items-center gap-1.5 rounded-md border border-[var(--border)] bg-[var(--surface)] px-2.5 text-xs font-medium text-muted transition-colors hover:text-fg hover:bg-[var(--surface-hover)]"
       >
         <Languages size={15} />

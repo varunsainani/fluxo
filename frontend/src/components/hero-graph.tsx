@@ -40,7 +40,7 @@ export function HeroGraph() {
           <span className="ml-2 font-mono text-[11px] text-faint">workflow.flux</span>
         </div>
 
-        <svg viewBox="0 0 320 260" className="w-full" role="img" aria-label="Animated workflow graph">
+        <svg viewBox="0 0 320 260" className="w-full" role="img" aria-label={t("graphAria")}>
           {/* edges */}
           {edges.map((d, i) => (
             <g key={i}>

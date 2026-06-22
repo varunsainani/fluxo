@@ -219,10 +219,11 @@ export async function runWorkflow(opts: RunWorkflowOpts): Promise<ExecutionDetai
 
 function matchesBranch(sourceHandle: string | null | undefined, branch: "true" | "false" | undefined): boolean {
   const handle = (sourceHandle ?? "").toLowerCase();
-  if (branch === "true") return handle === "true" || handle === "";
+  // Require an exact match: only edges whose handle equals the branch route.
+  // Null/empty/unlabeled handles match neither branch.
+  if (branch === "true") return handle === "true";
   if (branch === "false") return handle === "false";
-  // No branch info: follow all.
-  return true;
+  return false;
 }
 
 function findEntryNode(graph: Graph, trigger: TriggerKind): FlowNode | undefined {

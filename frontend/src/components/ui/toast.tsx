@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, AlertCircle, Info, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -44,6 +45,7 @@ const accent: Record<ToastKind, string> = {
 };
 
 export function ToastProvider({ children }: { children: ReactNode }) {
+  const tCommon = useTranslations("common");
   const [items, setItems] = useState<ToastItem[]>([]);
   const counter = useRef(0);
   const [mounted, setMounted] = useState(false);
@@ -96,7 +98,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                     type="button"
                     onClick={() => remove(t.id)}
                     className="shrink-0 text-faint transition-colors hover:text-fg"
-                    aria-label="Dismiss"
+                    aria-label={tCommon("dismiss")}
                   >
                     <X size={14} />
                   </button>

@@ -129,3 +129,22 @@ export async function me(req: Request, res: Response): Promise<void> {
   if (!user) throw unauthorized("auth.tokenInvalid");
   res.json({ user: publicUser(user) });
 }
+
+const updateMeSchema = z.object({
+  name: z.string().min(1).max(80).optional(),
+  locale: z.enum(["en", "es", "pt"]).optional(),
+});
+
+export async function updateMe(req: Request, res: Response): Promise<void> {
+  const { name, locale } = validate(updateMeSchema, req.body);
+
+  const data: { name?: string; locale?: string } = {};
+  if (name !== undefined) data.name = name.trim();
+  if (locale !== undefined) data.locale = locale;
+
+  const user = await prisma.user.update({
+    where: { id: req.user!.id },
+    data,
+  });
+  res.json({ user: publicUser(user) });
+}

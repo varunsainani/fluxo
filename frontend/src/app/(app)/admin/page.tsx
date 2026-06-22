@@ -79,7 +79,7 @@ export default function AdminPage() {
         {
           Icon: Gauge,
           label: t("statSuccessRate"),
-          value: formatPercent(overview.stats.successRate, locale, overview.stats.successRate <= 1),
+          value: formatPercent(overview.stats.successRate, locale, false),
         },
       ]
     : [];

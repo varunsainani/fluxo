@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { Moon, Sun, User as UserIcon } from "lucide-react";
 import { api } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
+import type { User } from "@/lib/types";
 import { locales, localeNames, LOCALE_COOKIE, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/cn";
 import { PageHeader } from "@/components/page-header";
@@ -40,20 +41,27 @@ export default function SettingsPage() {
     if (!user || !name.trim() || name.trim() === user.name) return;
     const next = name.trim();
     setSaving(true);
-    // Try to persist server-side; the auth/me PATCH may or may not exist depending
-    // on the backend build, so we fall back to an optimistic local update.
+    // Persist server-side, reflecting the returned user. Fall back to an
+    // optimistic local update if the request fails.
     try {
-      await api.patch("/auth/me", { name: next });
+      const { user: updated } = await api.patch<{ user: User }>("/auth/me", { name: next });
+      setUser(updated);
     } catch {
-      /* endpoint not available — keep the optimistic update */
+      setUser({ ...user, name: next });
     }
-    setUser({ ...user, name: next });
     toast.success(tToast("profileSaved"));
     setSaving(false);
   };
 
   const changeLocale = (loc: Locale) => {
     document.cookie = `${LOCALE_COOKIE}=${loc}; path=/; max-age=31536000; samesite=lax`;
+    // Best-effort: persist the preference on the user row too.
+    api
+      .patch<{ user: User }>("/auth/me", { locale: loc })
+      .then(({ user: updated }) => setUser(updated))
+      .catch(() => {
+        /* ignore: the cookie still drives the active locale */
+      });
     router.refresh();
   };
 
