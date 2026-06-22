@@ -100,7 +100,7 @@
     "feature2Title": "Dez tipos de nó",
     "feature2Body": "Requisições HTTP, definir campos, ramos if, anexar linha, notificar, atraso e um nó de código seguro, compostos em um canvas React Flow.",
     "feature3Title": "Motor de expressões",
-    "feature3Body": "Referencie a saída anterior com {{ $json.field }} e {{ $node[\"Name\"] }}. Sem eval: um resolvedor seguro escrito à mão.",
+    "feature3Body": "Referencie a saída anterior com '{{' $json.field '}}' e '{{' $node[\"Name\"] '}}'. Sem eval: um resolvedor seguro escrito à mão.",
     "feature4Title": "Inspetor de execução completo",
     "feature4Body": "Cada execução guarda os passos em ordem com entrada, saída, erro e duração. Reproduza e depure como um rastreamento.",
     "feature5Title": "Repositórios e conexões",
@@ -118,7 +118,7 @@
     "ctaTitle": "Crie seu primeiro fluxo em um minuto",
     "ctaLead": "Um clique te leva a uma conta demo totalmente populada. Sem cadastro.",
     "ctaButton": "Entrar na demo",
-    "footerNote": "Fluxo — um projeto de portfólio. Automação visual com um motor real no backend."
+    "footerNote": "Fluxo - um projeto de portfólio. Automação visual com um motor real no backend."
   },
   "auth": {
     "loginTitle": "Entre no Fluxo",
@@ -296,7 +296,7 @@
     "userExecutions": "Execuções",
     "userJoined": "Entrou",
     "owner": "Proprietário",
-    "noWorkflowName": "—"
+    "noWorkflowName": "-"
   },
   "roles": {
     "USER": "Usuário",
@@ -449,21 +449,21 @@
     "hint": {
       "sampleHint": "JSON opcional usado como entrada em uma execução manual.",
       "cronHint": "Cron padrão de 5 campos. Executa no fuso horário abaixo.",
-      "exprHint": "Use {{ $json.campo }} para ler a saída do nó anterior.",
+      "exprHint": "Use '{{' $json.campo '}}' para ler a saída do nó anterior.",
       "delayHint": "Limitado a 5 segundos no motor serverless.",
-      "codeHint": "Um documento JSON com expressões {{ }}, analisado após resolvê-las."
+      "codeHint": "Um documento JSON com expressões '{{' '}}', analisado após resolvê-las."
     },
     "ph": {
-      "sampleJson": "{ \"email\": \"jane@acme.com\" }",
+      "sampleJson": "'{' \"email\": \"jane@acme.com\" '}'",
       "cronExpr": "0 8 * * *",
       "tz": "UTC",
-      "url": "https://api.exemplo.com/caminho  ou  {{ $json.url }}",
-      "jsonBody": "{ \"name\": \"{{ $json.name }}\" }",
+      "url": "https://api.exemplo.com/caminho  ou  '{{' $json.url '}}'",
+      "jsonBody": "'{' \"name\": \"'{{' $json.name '}}'\" '}'",
       "datastoreName": "Leads",
-      "notifyTitle": "Novo lead: {{ $json.name }}",
+      "notifyTitle": "Novo lead: '{{' $json.name '}}'",
       "notifyBody": "Uma nova entrada foi capturada.",
-      "codeTemplate": "{ \"total\": {{ $json.count }} }",
-      "condLeft": "{{ $json.email }}",
+      "codeTemplate": "'{' \"total\": '{{' $json.count '}}' '}'",
+      "condLeft": "'{{' $json.email '}}'",
       "condRight": "valor esperado"
     },
     "op": {

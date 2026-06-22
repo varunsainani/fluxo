@@ -100,7 +100,7 @@
     "feature2Title": "Diez tipos de nodo",
     "feature2Body": "Peticiones HTTP, asignar campos, ramas if, añadir fila, notificar, retardo y un nodo de código seguro, compuestos en un lienzo React Flow.",
     "feature3Title": "Motor de expresiones",
-    "feature3Body": "Referencia la salida previa con {{ $json.field }} y {{ $node[\"Name\"] }}. Sin eval: un resolutor seguro escrito a mano.",
+    "feature3Body": "Referencia la salida previa con '{{' $json.field '}}' y '{{' $node[\"Name\"] '}}'. Sin eval: un resolutor seguro escrito a mano.",
     "feature4Title": "Inspector de ejecución completo",
     "feature4Body": "Cada ejecución guarda los pasos en orden con entrada, salida, error y duración. Reproduce y depura como una traza.",
     "feature5Title": "Almacenes y conexiones",
@@ -118,7 +118,7 @@
     "ctaTitle": "Crea tu primer flujo en un minuto",
     "ctaLead": "Un clic te lleva a una cuenta demo completamente poblada. Sin registro.",
     "ctaButton": "Entrar a la demo",
-    "footerNote": "Fluxo — un proyecto de portafolio. Automatización visual con un motor real en el backend."
+    "footerNote": "Fluxo - un proyecto de portafolio. Automatización visual con un motor real en el backend."
   },
   "auth": {
     "loginTitle": "Inicia sesión en Fluxo",
@@ -296,7 +296,7 @@
     "userExecutions": "Ejecuciones",
     "userJoined": "Se unió",
     "owner": "Propietario",
-    "noWorkflowName": "—"
+    "noWorkflowName": "-"
   },
   "roles": {
     "USER": "Usuario",
@@ -449,21 +449,21 @@
     "hint": {
       "sampleHint": "JSON opcional usado como entrada en una ejecución manual.",
       "cronHint": "Cron estándar de 5 campos. Se ejecuta en la zona horaria de abajo.",
-      "exprHint": "Usa {{ $json.campo }} para leer la salida del nodo anterior.",
+      "exprHint": "Usa '{{' $json.campo '}}' para leer la salida del nodo anterior.",
       "delayHint": "Limitado a 5 segundos en el motor serverless.",
-      "codeHint": "Un documento JSON con expresiones {{ }}, analizado tras resolverlas."
+      "codeHint": "Un documento JSON con expresiones '{{' '}}', analizado tras resolverlas."
     },
     "ph": {
-      "sampleJson": "{ \"email\": \"jane@acme.com\" }",
+      "sampleJson": "'{' \"email\": \"jane@acme.com\" '}'",
       "cronExpr": "0 8 * * *",
       "tz": "UTC",
-      "url": "https://api.ejemplo.com/ruta  o  {{ $json.url }}",
-      "jsonBody": "{ \"name\": \"{{ $json.name }}\" }",
+      "url": "https://api.ejemplo.com/ruta  o  '{{' $json.url '}}'",
+      "jsonBody": "'{' \"name\": \"'{{' $json.name '}}'\" '}'",
       "datastoreName": "Leads",
-      "notifyTitle": "Nuevo lead: {{ $json.name }}",
+      "notifyTitle": "Nuevo lead: '{{' $json.name '}}'",
       "notifyBody": "Se capturó una nueva entrada.",
-      "codeTemplate": "{ \"total\": {{ $json.count }} }",
-      "condLeft": "{{ $json.email }}",
+      "codeTemplate": "'{' \"total\": '{{' $json.count '}}' '}'",
+      "condLeft": "'{{' $json.email '}}'",
       "condRight": "valor esperado"
     },
     "op": {

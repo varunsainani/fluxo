@@ -98,9 +98,9 @@
     "feature1Title": "Real triggers",
     "feature1Body": "Manual, inbound webhook, and cron schedule triggers. Each workflow gets a unique webhook URL and a timezone-aware next-run.",
     "feature2Title": "Ten node kinds",
-    "feature2Body": "HTTP requests, set-fields, if-branches, append-row, notify, delay and a safe code node — composed on a React Flow canvas.",
+    "feature2Body": "HTTP requests, set-fields, if-branches, append-row, notify, delay and a safe code node - composed on a React Flow canvas.",
     "feature3Title": "Expression engine",
-    "feature3Body": "Reference upstream output with {{ $json.field }} and {{ $node[\"Name\"] }}. No eval — a hand-written, safe resolver.",
+    "feature3Body": "Reference upstream output with '{{' $json.field '}}' and '{{' $node[\"Name\"] '}}'. No eval - a hand-written, safe resolver.",
     "feature4Title": "Full run inspector",
     "feature4Body": "Every execution stores ordered node runs with input, output, error and duration. Replay and debug like a stack trace.",
     "feature5Title": "Datastores & connections",
@@ -118,7 +118,7 @@
     "ctaTitle": "Build your first workflow in a minute",
     "ctaLead": "One click drops you into a fully seeded demo account. No signup.",
     "ctaButton": "Enter the demo",
-    "footerNote": "Fluxo — a portfolio build. Visual automation with a real backend engine."
+    "footerNote": "Fluxo - a portfolio build. Visual automation with a real backend engine."
   },
   "auth": {
     "loginTitle": "Sign in to Fluxo",
@@ -126,7 +126,7 @@
     "registerTitle": "Create your account",
     "registerSubtitle": "Start building workflows in seconds.",
     "demoSectionTitle": "One-click demo",
-    "demoSectionHint": "No signup — a real, fully seeded session.",
+    "demoSectionHint": "No signup - a real, fully seeded session.",
     "enterAsUser": "Enter as demo user",
     "enterAsAdmin": "Enter as admin",
     "enteringDemo": "Opening demo…",
@@ -296,7 +296,7 @@
     "userExecutions": "Executions",
     "userJoined": "Joined",
     "owner": "Owner",
-    "noWorkflowName": "—"
+    "noWorkflowName": "-"
   },
   "roles": {
     "USER": "User",
@@ -410,7 +410,7 @@
     "condition": "Condition",
     "webhookUrl": "Webhook URL",
     "webhookHint": "Send a POST (or GET) request here to trigger this workflow while it is active.",
-    "mobileHint": "Compact editor — open on a wider screen for the full canvas.",
+    "mobileHint": "Compact editor - open on a wider screen for the full canvas.",
     "workflowNotFound": "Workflow not found",
     "handle": {
       "true": "true",
@@ -449,21 +449,21 @@
     "hint": {
       "sampleHint": "Optional JSON used as the input on a manual run.",
       "cronHint": "Standard 5-field cron. Runs in the timezone below.",
-      "exprHint": "Use {{ $json.field }} to read the previous node’s output.",
+      "exprHint": "Use '{{' $json.field '}}' to read the previous node’s output.",
       "delayHint": "Capped at 5 seconds on the serverless engine.",
-      "codeHint": "A JSON document with {{ }} expressions, parsed after resolving."
+      "codeHint": "A JSON document with '{{' '}}' expressions, parsed after resolving."
     },
     "ph": {
-      "sampleJson": "{ \"email\": \"jane@acme.com\" }",
+      "sampleJson": "'{' \"email\": \"jane@acme.com\" '}'",
       "cronExpr": "0 8 * * *",
       "tz": "UTC",
-      "url": "https://api.example.com/path  or  {{ $json.url }}",
-      "jsonBody": "{ \"name\": \"{{ $json.name }}\" }",
+      "url": "https://api.example.com/path  or  '{{' $json.url '}}'",
+      "jsonBody": "'{' \"name\": \"'{{' $json.name '}}'\" '}'",
       "datastoreName": "Leads",
-      "notifyTitle": "New lead: {{ $json.name }}",
+      "notifyTitle": "New lead: '{{' $json.name '}}'",
       "notifyBody": "A new entry was captured.",
-      "codeTemplate": "{ \"total\": {{ $json.count }} }",
-      "condLeft": "{{ $json.email }}",
+      "codeTemplate": "'{' \"total\": '{{' $json.count '}}' '}'",
+      "condLeft": "'{{' $json.email '}}'",
       "condRight": "expected value"
     },
     "op": {
