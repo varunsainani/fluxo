@@ -321,40 +321,52 @@
     "email": "Correo"
   },
   "nodeKinds": {
-    "trigger.manual": "Disparador manual",
-    "trigger.webhook": "Disparador webhook",
-    "trigger.schedule": "Disparador programado",
-    "action.http": "Petición HTTP",
-    "action.setFields": "Asignar campos",
-    "action.if": "If / rama",
-    "action.appendRow": "Añadir fila",
-    "action.notify": "Notificar",
-    "action.delay": "Retardo",
-    "action.code": "Código"
+    "trigger": {
+      "manual": "Disparador manual",
+      "webhook": "Disparador webhook",
+      "schedule": "Disparador programado"
+    },
+    "action": {
+      "http": "Petición HTTP",
+      "setFields": "Asignar campos",
+      "if": "If / rama",
+      "appendRow": "Añadir fila",
+      "notify": "Notificar",
+      "delay": "Retardo",
+      "code": "Código"
+    }
   },
   "nodeKindsShort": {
-    "trigger.manual": "Manual",
-    "trigger.webhook": "Webhook",
-    "trigger.schedule": "Programado",
-    "action.http": "HTTP",
-    "action.setFields": "Asignar",
-    "action.if": "If",
-    "action.appendRow": "Añadir fila",
-    "action.notify": "Notificar",
-    "action.delay": "Retardo",
-    "action.code": "Código"
+    "trigger": {
+      "manual": "Manual",
+      "webhook": "Webhook",
+      "schedule": "Programado"
+    },
+    "action": {
+      "http": "HTTP",
+      "setFields": "Asignar",
+      "if": "If",
+      "appendRow": "Añadir fila",
+      "notify": "Notificar",
+      "delay": "Retardo",
+      "code": "Código"
+    }
   },
   "nodeKindsDesc": {
-    "trigger.manual": "Inicia una ejecución a mano con una carga de ejemplo.",
-    "trigger.webhook": "Se ejecuta cuando una petición HTTP llega a la URL del flujo.",
-    "trigger.schedule": "Se ejecuta con un cron en una zona horaria.",
-    "action.http": "Realiza una petición HTTP real y captura la respuesta.",
-    "action.setFields": "Construye un objeto nuevo a partir de campos resueltos.",
-    "action.if": "Ramifica el flujo según una o más condiciones.",
-    "action.appendRow": "Añade una fila a una tabla de almacén.",
-    "action.notify": "Envía un mensaje de bandeja, Slack, WhatsApp o correo.",
-    "action.delay": "Pausa la ejecución una cantidad de segundos.",
-    "action.code": "Resuelve una plantilla JSON con expresiones."
+    "trigger": {
+      "manual": "Inicia una ejecución a mano con una carga de ejemplo.",
+      "webhook": "Se ejecuta cuando una petición HTTP llega a la URL del flujo.",
+      "schedule": "Se ejecuta con un cron en una zona horaria."
+    },
+    "action": {
+      "http": "Realiza una petición HTTP real y captura la respuesta.",
+      "setFields": "Construye un objeto nuevo a partir de campos resueltos.",
+      "if": "Ramifica el flujo según una o más condiciones.",
+      "appendRow": "Añade una fila a una tabla de almacén.",
+      "notify": "Envía un mensaje de bandeja, Slack, WhatsApp o correo.",
+      "delay": "Pausa la ejecución una cantidad de segundos.",
+      "code": "Resuelve una plantilla JSON con expresiones."
+    }
   },
   "nodes": {
     "trigger": "Disparadores",

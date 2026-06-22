@@ -321,40 +321,52 @@
     "email": "E-mail"
   },
   "nodeKinds": {
-    "trigger.manual": "Gatilho manual",
-    "trigger.webhook": "Gatilho webhook",
-    "trigger.schedule": "Gatilho agendado",
-    "action.http": "Requisição HTTP",
-    "action.setFields": "Definir campos",
-    "action.if": "If / ramo",
-    "action.appendRow": "Anexar linha",
-    "action.notify": "Notificar",
-    "action.delay": "Atraso",
-    "action.code": "Código"
+    "trigger": {
+      "manual": "Gatilho manual",
+      "webhook": "Gatilho webhook",
+      "schedule": "Gatilho agendado"
+    },
+    "action": {
+      "http": "Requisição HTTP",
+      "setFields": "Definir campos",
+      "if": "If / ramo",
+      "appendRow": "Anexar linha",
+      "notify": "Notificar",
+      "delay": "Atraso",
+      "code": "Código"
+    }
   },
   "nodeKindsShort": {
-    "trigger.manual": "Manual",
-    "trigger.webhook": "Webhook",
-    "trigger.schedule": "Agendado",
-    "action.http": "HTTP",
-    "action.setFields": "Definir",
-    "action.if": "If",
-    "action.appendRow": "Anexar linha",
-    "action.notify": "Notificar",
-    "action.delay": "Atraso",
-    "action.code": "Código"
+    "trigger": {
+      "manual": "Manual",
+      "webhook": "Webhook",
+      "schedule": "Agendado"
+    },
+    "action": {
+      "http": "HTTP",
+      "setFields": "Definir",
+      "if": "If",
+      "appendRow": "Anexar linha",
+      "notify": "Notificar",
+      "delay": "Atraso",
+      "code": "Código"
+    }
   },
   "nodeKindsDesc": {
-    "trigger.manual": "Inicie uma execução à mão com uma carga de exemplo.",
-    "trigger.webhook": "Executa quando uma requisição HTTP chega à URL do fluxo.",
-    "trigger.schedule": "Executa com um cron em um fuso horário.",
-    "action.http": "Faz uma requisição HTTP real e captura a resposta.",
-    "action.setFields": "Constrói um novo objeto a partir de campos resolvidos.",
-    "action.if": "Ramifica o fluxo por uma ou mais condições.",
-    "action.appendRow": "Anexa uma linha a uma tabela de repositório.",
-    "action.notify": "Envia uma mensagem de inbox, Slack, WhatsApp ou e-mail.",
-    "action.delay": "Pausa a execução por um número de segundos.",
-    "action.code": "Resolve um template JSON com expressões."
+    "trigger": {
+      "manual": "Inicie uma execução à mão com uma carga de exemplo.",
+      "webhook": "Executa quando uma requisição HTTP chega à URL do fluxo.",
+      "schedule": "Executa com um cron em um fuso horário."
+    },
+    "action": {
+      "http": "Faz uma requisição HTTP real e captura a resposta.",
+      "setFields": "Constrói um novo objeto a partir de campos resolvidos.",
+      "if": "Ramifica o fluxo por uma ou mais condições.",
+      "appendRow": "Anexa uma linha a uma tabela de repositório.",
+      "notify": "Envia uma mensagem de inbox, Slack, WhatsApp ou e-mail.",
+      "delay": "Pausa a execução por um número de segundos.",
+      "code": "Resolve um template JSON com expressões."
+    }
   },
   "nodes": {
     "trigger": "Gatilhos",

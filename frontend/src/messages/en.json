@@ -321,40 +321,52 @@
     "email": "Email"
   },
   "nodeKinds": {
-    "trigger.manual": "Manual trigger",
-    "trigger.webhook": "Webhook trigger",
-    "trigger.schedule": "Schedule trigger",
-    "action.http": "HTTP request",
-    "action.setFields": "Set fields",
-    "action.if": "If / branch",
-    "action.appendRow": "Append row",
-    "action.notify": "Notify",
-    "action.delay": "Delay",
-    "action.code": "Code"
+    "trigger": {
+      "manual": "Manual trigger",
+      "webhook": "Webhook trigger",
+      "schedule": "Schedule trigger"
+    },
+    "action": {
+      "http": "HTTP request",
+      "setFields": "Set fields",
+      "if": "If / branch",
+      "appendRow": "Append row",
+      "notify": "Notify",
+      "delay": "Delay",
+      "code": "Code"
+    }
   },
   "nodeKindsShort": {
-    "trigger.manual": "Manual",
-    "trigger.webhook": "Webhook",
-    "trigger.schedule": "Schedule",
-    "action.http": "HTTP",
-    "action.setFields": "Set fields",
-    "action.if": "If",
-    "action.appendRow": "Append row",
-    "action.notify": "Notify",
-    "action.delay": "Delay",
-    "action.code": "Code"
+    "trigger": {
+      "manual": "Manual",
+      "webhook": "Webhook",
+      "schedule": "Schedule"
+    },
+    "action": {
+      "http": "HTTP",
+      "setFields": "Set fields",
+      "if": "If",
+      "appendRow": "Append row",
+      "notify": "Notify",
+      "delay": "Delay",
+      "code": "Code"
+    }
   },
   "nodeKindsDesc": {
-    "trigger.manual": "Start a run by hand with a sample payload.",
-    "trigger.webhook": "Run when an HTTP request hits the workflow URL.",
-    "trigger.schedule": "Run on a cron schedule in a timezone.",
-    "action.http": "Make a real HTTP request and capture the response.",
-    "action.setFields": "Build a new object from resolved fields.",
-    "action.if": "Branch the flow on one or more conditions.",
-    "action.appendRow": "Append a row to a datastore table.",
-    "action.notify": "Send an inbox, Slack, WhatsApp or email message.",
-    "action.delay": "Pause the run for a number of seconds.",
-    "action.code": "Resolve a JSON template with expressions."
+    "trigger": {
+      "manual": "Start a run by hand with a sample payload.",
+      "webhook": "Run when an HTTP request hits the workflow URL.",
+      "schedule": "Run on a cron schedule in a timezone."
+    },
+    "action": {
+      "http": "Make a real HTTP request and capture the response.",
+      "setFields": "Build a new object from resolved fields.",
+      "if": "Branch the flow on one or more conditions.",
+      "appendRow": "Append a row to a datastore table.",
+      "notify": "Send an inbox, Slack, WhatsApp or email message.",
+      "delay": "Pause the run for a number of seconds.",
+      "code": "Resolve a JSON template with expressions."
+    }
   },
   "nodes": {
     "trigger": "Triggers",
